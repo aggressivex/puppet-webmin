@@ -8,16 +8,24 @@ define webmin::setup (
   $ensure     = installed,
   $boot       = true,
   $status     = 'running',
-  $firewall   = false
+  $firewall   = false,
+  $port       = 10000,
 ) {
 
   include conf
-
   $defaultConf = $conf::conf
   $defaultSetup = $conf::setup
 
-  package { webmin:
-    ensure => $ensure,
+  yumrepo { "webmin":
+    baseurl  => "http://download.webmin.com/download/yum",
+    descr    => "Webmin Distribution Neutral",
+    enabled  => 1,
+    gpgcheck => 0,
+  }
+
+  package { 'webmin':
+    ensure => "present",
+    require => Yumrepo["webmin"]
   }
 
   service { 'webmin':
