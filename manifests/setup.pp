@@ -46,12 +46,12 @@ define webmin::setup (
     iptables: {
       exec { "webmin-firewall-iptables-add":
         command => "iptables -A INPUT -p tcp --dport ${port} -j ACCEPT",
-        path    => "/usr/local/bin/:/bin/:/usr/bin/:/usr/sbin",
+        path    => "/usr/local/bin/:/bin/:/usr/bin/:/usr/sbin:/sbin/",
         require => Package["bind"]
       }
       exec { "webmin-firewall-iptables-save":
         command => "service iptables save",
-        path    => "/usr/local/bin/:/bin/:/usr/bin/:/usr/sbin",
+        path    => "/usr/local/bin/:/bin/:/usr/bin/:/usr/sbin:/sbin/",
         require => Exec["bind-firewall-iptables-add"]
       }
     }
