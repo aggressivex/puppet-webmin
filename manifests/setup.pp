@@ -20,8 +20,8 @@ define webmin::setup (
     ensure => $ensure,
   }
 
-  service { 'named':
-    name       => 'named',
+  service { 'webmin':
+    name       => 'webmin',
     ensure     => $status,
     enable     => $boot,
     hasrestart => true,
