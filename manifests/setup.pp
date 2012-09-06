@@ -45,7 +45,7 @@ define webmin::setup (
     }
     iptables: {
       exec { "webmin-firewall-iptables-add":
-        command => "iptables -A INPUT -p tcp --dport ${port} -j ACCEPT",
+        command => "iptables -I INPUT 5 -p tcp --dport ${port} -j ACCEPT",
         path    => "/usr/local/bin/:/bin/:/usr/bin/:/usr/sbin:/sbin/",
         require => Package["bind"]
       }

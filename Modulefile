@@ -1,0 +1,8 @@
+name    'aggressivex-webmin'
+version '0.5.0'
+author  'Luis M. Hdez'
+license 'MIT'
+project_page 'http://opensource.aggressivex.com/puppet/webmin'
+source  'https://github.com/aggressivex/puppet-webmin'
+summary 'Puppet module for webmin'
+description 'This module installs and manages webmin.'
