@@ -9,7 +9,7 @@ define webmin::setup (
   $boot         = true,
   $status       = 'running',
   $firewall     = false,
-  $firewallPort = 10000,
+  $firewallPort = '10000:10010',
 ) {
 
   include conf
