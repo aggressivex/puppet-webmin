@@ -3,13 +3,13 @@
 # This class installs webmin for CentOS / RHEL
 #
 define webmin::setup (
-  $customSetup = {},
-  $customConf  = {},
-  $ensure     = installed,
-  $boot       = true,
-  $status     = 'running',
-  $firewall   = false,
-  $port       = 10000,
+  $customSetup  = {},
+  $customConf   = {},
+  $ensure       = installed,
+  $boot         = true,
+  $status       = 'running',
+  $firewall     = false,
+  $firewallPort = 10000,
 ) {
 
   include conf
@@ -45,7 +45,7 @@ define webmin::setup (
     }
     iptables: {
       exec { "webmin-firewall-iptables-add":
-        command => "iptables -I INPUT 5 -p tcp --dport ${port} -j ACCEPT",
+        command => "iptables -I INPUT 5 -p tcp --dport ${firewallPort} -j ACCEPT",
         path    => "/usr/local/bin/:/bin/:/usr/bin/:/usr/sbin:/sbin/",
         require => Package["bind"]
       }
