@@ -3,8 +3,8 @@
 # This class installs webmin for CentOS / RHEL
 #
 define webmin::setup (
-  $cutomSetup = {},
-  $cutomConf  = {},
+  $customSetup = {},
+  $customConf  = {},
   $ensure     = installed,
   $boot       = true,
   $status     = 'running',
